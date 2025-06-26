@@ -49,6 +49,8 @@
             this.SubjectName_label = new System.Windows.Forms.Label();
             this.TimetableSlot_label = new System.Windows.Forms.Label();
             this.TimetableDate_label = new System.Windows.Forms.Label();
+            this.TTSearch_textBox = new System.Windows.Forms.TextBox();
+            this.TTSearch_button = new System.Windows.Forms.Button();
             this.student_header_pn.SuspendLayout();
             this.timetable_panel.SuspendLayout();
             this.TimeTableCenter_panel.SuspendLayout();
@@ -108,6 +110,7 @@
             this.TTDelete_button.TabIndex = 17;
             this.TTDelete_button.Text = "Delete";
             this.TTDelete_button.UseVisualStyleBackColor = true;
+            this.TTDelete_button.Click += new System.EventHandler(this.TTDelete_button_Click);
             // 
             // TTUpdate_button
             // 
@@ -118,6 +121,7 @@
             this.TTUpdate_button.TabIndex = 16;
             this.TTUpdate_button.Text = "Update";
             this.TTUpdate_button.UseVisualStyleBackColor = true;
+            this.TTUpdate_button.Click += new System.EventHandler(this.TTUpdate_button_Click);
             // 
             // TTInsert__button
             // 
@@ -132,6 +136,8 @@
             // 
             // TimeTableCenter_panel
             // 
+            this.TimeTableCenter_panel.Controls.Add(this.TTSearch_button);
+            this.TimeTableCenter_panel.Controls.Add(this.TTSearch_textBox);
             this.TimeTableCenter_panel.Controls.Add(this.TTLecturer_comboBox);
             this.TimeTableCenter_panel.Controls.Add(this.LecturerName_label);
             this.TimeTableCenter_panel.Controls.Add(this.TimeTabledataGridView);
@@ -172,10 +178,11 @@
             // TimeTabledataGridView
             // 
             this.TimeTabledataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TimeTabledataGridView.Location = new System.Drawing.Point(114, 256);
+            this.TimeTabledataGridView.Location = new System.Drawing.Point(114, 279);
             this.TimeTabledataGridView.Name = "TimeTabledataGridView";
             this.TimeTabledataGridView.Size = new System.Drawing.Size(507, 150);
             this.TimeTabledataGridView.TabIndex = 57;
+            this.TimeTabledataGridView.SelectionChanged += new System.EventHandler(this.TimeTabledataGridView_SelectionChanged);
             // 
             // TTRoomName_comboBox
             // 
@@ -274,6 +281,25 @@
             this.TimetableDate_label.TabIndex = 47;
             this.TimetableDate_label.Text = "Timetable Date";
             // 
+            // TTSearch_textBox
+            // 
+            this.TTSearch_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TTSearch_textBox.Location = new System.Drawing.Point(271, 237);
+            this.TTSearch_textBox.Name = "TTSearch_textBox";
+            this.TTSearch_textBox.Size = new System.Drawing.Size(294, 26);
+            this.TTSearch_textBox.TabIndex = 60;
+            // 
+            // TTSearch_button
+            // 
+            this.TTSearch_button.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TTSearch_button.Location = new System.Drawing.Point(148, 232);
+            this.TTSearch_button.Name = "TTSearch_button";
+            this.TTSearch_button.Size = new System.Drawing.Size(99, 34);
+            this.TTSearch_button.TabIndex = 19;
+            this.TTSearch_button.Text = "Search";
+            this.TTSearch_button.UseVisualStyleBackColor = true;
+            this.TTSearch_button.Click += new System.EventHandler(this.TTSearch_button_Click);
+            // 
             // TimetableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -317,5 +343,7 @@
         private System.Windows.Forms.Label LecturerName_label;
         private System.Windows.Forms.ComboBox TTRoomName_comboBox;
         private System.Windows.Forms.Label RoomName_label;
+        private System.Windows.Forms.Button TTSearch_button;
+        private System.Windows.Forms.TextBox TTSearch_textBox;
     }
 }

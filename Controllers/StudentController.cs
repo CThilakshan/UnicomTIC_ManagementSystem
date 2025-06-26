@@ -167,6 +167,7 @@ namespace Unicom_TIC_Management_System.Controller
                 MessageBox.Show("Error deleting student:\n" + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        // Search students by name using LIKE operator
         public List<Student> SearchStudentsByName(string keyword)
         {
             string searchQuery = "SELECT * FROM Students WHERE Student_Name LIKE @Student_Name";
@@ -236,5 +237,7 @@ namespace Unicom_TIC_Management_System.Controller
 
             return null;
         }
+       
+        
     }
 }
