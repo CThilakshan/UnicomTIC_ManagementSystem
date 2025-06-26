@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unicom_TIC_Management_System.Controllers;
+using Unicom_TIC_Management_System.Model;
 
 namespace Unicom_TIC_Management_System.View
 {
@@ -16,11 +17,27 @@ namespace Unicom_TIC_Management_System.View
         private StaffController staffController = new StaffController();
         private int selectedUserId = -1;
         private int selectedStaffId = -1;
+        private User currentUser;
 
-        public StaffForm()
+
+        public StaffForm(User user)
         {
             InitializeComponent();
+            currentUser = user;
             LoadStaff();
+            Hideuser();
+        }
+        private void Hideuser()
+        {
+            if (currentUser.Role == "Student" || currentUser.Role == "Lecturer"|| currentUser.Role == "Staff")
+            {
+                // Hide specific labels for students
+                student_menu_pn.Visible = false;
+                stupaswordpanel.Visible = false;
+
+
+            }
+
         }
 
         private void LoadStaff()

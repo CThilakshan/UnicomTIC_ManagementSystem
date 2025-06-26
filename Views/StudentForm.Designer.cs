@@ -43,15 +43,15 @@
             this.StudnetCoursename_label = new System.Windows.Forms.Label();
             this.CourseName_comboBox = new System.Windows.Forms.ComboBox();
             this.Student_dataGridView = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.password_panel = new System.Windows.Forms.Panel();
             this.StudentUsername_textBox = new System.Windows.Forms.TextBox();
             this.StudentPassword_textBox = new System.Windows.Forms.TextBox();
-            this.Search_button = new System.Windows.Forms.Button();
-            this.Search_textBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.student_header_pn.SuspendLayout();
             this.student_menu_pn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Student_dataGridView)).BeginInit();
+            this.password_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -200,71 +200,59 @@
             this.Student_dataGridView.TabIndex = 13;
             this.Student_dataGridView.SelectionChanged += new System.EventHandler(this.Student_dataGridView_SelectionChanged);
             // 
-            // label2
+            // password_panel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(116, 227);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 15);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Username";
+            this.password_panel.Controls.Add(this.StudentUsername_textBox);
+            this.password_panel.Controls.Add(this.StudentPassword_textBox);
+            this.password_panel.Controls.Add(this.label3);
+            this.password_panel.Controls.Add(this.label2);
+            this.password_panel.Location = new System.Drawing.Point(0, 224);
+            this.password_panel.Name = "password_panel";
+            this.password_panel.Size = new System.Drawing.Size(730, 90);
+            this.password_panel.TabIndex = 23;
+            // 
+            // StudentUsername_textBox
+            // 
+            this.StudentUsername_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StudentUsername_textBox.Location = new System.Drawing.Point(281, 2);
+            this.StudentUsername_textBox.Name = "StudentUsername_textBox";
+            this.StudentUsername_textBox.Size = new System.Drawing.Size(325, 21);
+            this.StudentUsername_textBox.TabIndex = 26;
+            // 
+            // StudentPassword_textBox
+            // 
+            this.StudentPassword_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StudentPassword_textBox.Location = new System.Drawing.Point(281, 31);
+            this.StudentPassword_textBox.Name = "StudentPassword_textBox";
+            this.StudentPassword_textBox.Size = new System.Drawing.Size(325, 21);
+            this.StudentPassword_textBox.TabIndex = 25;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(116, 256);
+            this.label3.Location = new System.Drawing.Point(116, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 15);
-            this.label3.TabIndex = 20;
+            this.label3.TabIndex = 24;
             this.label3.Text = "Password";
             // 
-            // StudentUsername_textBox
+            // label2
             // 
-            this.StudentUsername_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StudentUsername_textBox.Location = new System.Drawing.Point(281, 226);
-            this.StudentUsername_textBox.Name = "StudentUsername_textBox";
-            this.StudentUsername_textBox.Size = new System.Drawing.Size(325, 21);
-            this.StudentUsername_textBox.TabIndex = 22;
-            // 
-            // StudentPassword_textBox
-            // 
-            this.StudentPassword_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StudentPassword_textBox.Location = new System.Drawing.Point(281, 255);
-            this.StudentPassword_textBox.Name = "StudentPassword_textBox";
-            this.StudentPassword_textBox.Size = new System.Drawing.Size(325, 21);
-            this.StudentPassword_textBox.TabIndex = 21;
-            // 
-            // Search_button
-            // 
-            this.Search_button.Font = new System.Drawing.Font("Modern No. 20", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Search_button.Location = new System.Drawing.Point(186, 288);
-            this.Search_button.Name = "Search_button";
-            this.Search_button.Size = new System.Drawing.Size(75, 24);
-            this.Search_button.TabIndex = 29;
-            this.Search_button.Text = "Search";
-            this.Search_button.UseVisualStyleBackColor = true;
-            // 
-            // Search_textBox
-            // 
-            this.Search_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Search_textBox.Location = new System.Drawing.Point(282, 289);
-            this.Search_textBox.Name = "Search_textBox";
-            this.Search_textBox.Size = new System.Drawing.Size(325, 21);
-            this.Search_textBox.TabIndex = 28;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(116, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 15);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Username";
             // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(730, 550);
-            this.Controls.Add(this.Search_button);
-            this.Controls.Add(this.Search_textBox);
-            this.Controls.Add(this.StudentUsername_textBox);
-            this.Controls.Add(this.StudentPassword_textBox);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.password_panel);
             this.Controls.Add(this.Student_dataGridView);
             this.Controls.Add(this.CourseName_comboBox);
             this.Controls.Add(this.StudnetCoursename_label);
@@ -283,6 +271,8 @@
             this.student_header_pn.PerformLayout();
             this.student_menu_pn.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Student_dataGridView)).EndInit();
+            this.password_panel.ResumeLayout(false);
+            this.password_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,11 +295,10 @@
         private System.Windows.Forms.Button StudentInsert_button;
         private System.Windows.Forms.Button Delete_button;
         private System.Windows.Forms.Button Update_button;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel password_panel;
         private System.Windows.Forms.TextBox StudentUsername_textBox;
         private System.Windows.Forms.TextBox StudentPassword_textBox;
-        private System.Windows.Forms.Button Search_button;
-        private System.Windows.Forms.TextBox Search_textBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

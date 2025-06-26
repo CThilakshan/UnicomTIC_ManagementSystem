@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unicom_TIC_Management_System.Repositories;
+using Unicom_TIC_Management_System.View;
 
 namespace Unicom_TIC_Management_System
 {
@@ -18,7 +19,7 @@ namespace Unicom_TIC_Management_System
             DatabaseManager.CreateTables(); // Ensure tables are created before running the application
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new LoginForm());
         }
     }
 }

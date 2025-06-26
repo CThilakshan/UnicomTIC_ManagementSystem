@@ -35,19 +35,21 @@
             this.student_menu_pn = new System.Windows.Forms.Panel();
             this.student_header_pn = new System.Windows.Forms.Panel();
             this.Staff_Details = new System.Windows.Forms.Label();
-            this.StaffUsername_textBox = new System.Windows.Forms.TextBox();
-            this.StaffPassword_textBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.StaffPhoneNo_textBox = new System.Windows.Forms.TextBox();
             this.StaffEmail_textBox = new System.Windows.Forms.TextBox();
             this.StaffFullname_textBox = new System.Windows.Forms.TextBox();
             this.StudentPhone_No_label = new System.Windows.Forms.Label();
             this.Student_Email_label = new System.Windows.Forms.Label();
             this.Staff_Namelabel = new System.Windows.Forms.Label();
+            this.stupaswordpanel = new System.Windows.Forms.Panel();
+            this.StaffUsername_textBox = new System.Windows.Forms.TextBox();
+            this.StaffPassword_textBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.StaffdataGridView)).BeginInit();
             this.student_menu_pn.SuspendLayout();
             this.student_header_pn.SuspendLayout();
+            this.stupaswordpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // StaffdataGridView
@@ -123,42 +125,6 @@
             this.Staff_Details.TabIndex = 0;
             this.Staff_Details.Text = "Staff Details";
             // 
-            // StaffUsername_textBox
-            // 
-            this.StaffUsername_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StaffUsername_textBox.Location = new System.Drawing.Point(285, 198);
-            this.StaffUsername_textBox.Name = "StaffUsername_textBox";
-            this.StaffUsername_textBox.Size = new System.Drawing.Size(325, 21);
-            this.StaffUsername_textBox.TabIndex = 38;
-            // 
-            // StaffPassword_textBox
-            // 
-            this.StaffPassword_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StaffPassword_textBox.Location = new System.Drawing.Point(285, 227);
-            this.StaffPassword_textBox.Name = "StaffPassword_textBox";
-            this.StaffPassword_textBox.Size = new System.Drawing.Size(325, 21);
-            this.StaffPassword_textBox.TabIndex = 37;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(120, 228);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 15);
-            this.label3.TabIndex = 36;
-            this.label3.Text = "Password";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(120, 199);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 15);
-            this.label2.TabIndex = 35;
-            this.label2.Text = "Username";
-            // 
             // StaffPhoneNo_textBox
             // 
             this.StaffPhoneNo_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -213,15 +179,59 @@
             this.Staff_Namelabel.TabIndex = 27;
             this.Staff_Namelabel.Text = "Staff FullName ";
             // 
+            // stupaswordpanel
+            // 
+            this.stupaswordpanel.Controls.Add(this.StaffUsername_textBox);
+            this.stupaswordpanel.Controls.Add(this.StaffPassword_textBox);
+            this.stupaswordpanel.Controls.Add(this.label3);
+            this.stupaswordpanel.Controls.Add(this.label2);
+            this.stupaswordpanel.Location = new System.Drawing.Point(0, 194);
+            this.stupaswordpanel.Name = "stupaswordpanel";
+            this.stupaswordpanel.Size = new System.Drawing.Size(730, 61);
+            this.stupaswordpanel.TabIndex = 39;
+            // 
+            // StaffUsername_textBox
+            // 
+            this.StaffUsername_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StaffUsername_textBox.Location = new System.Drawing.Point(285, 5);
+            this.StaffUsername_textBox.Name = "StaffUsername_textBox";
+            this.StaffUsername_textBox.Size = new System.Drawing.Size(325, 21);
+            this.StaffUsername_textBox.TabIndex = 42;
+            // 
+            // StaffPassword_textBox
+            // 
+            this.StaffPassword_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StaffPassword_textBox.Location = new System.Drawing.Point(285, 34);
+            this.StaffPassword_textBox.Name = "StaffPassword_textBox";
+            this.StaffPassword_textBox.Size = new System.Drawing.Size(325, 21);
+            this.StaffPassword_textBox.TabIndex = 41;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(120, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 15);
+            this.label3.TabIndex = 40;
+            this.label3.Text = "Password";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(120, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 15);
+            this.label2.TabIndex = 39;
+            this.label2.Text = "Username";
+            // 
             // StaffForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(730, 550);
-            this.Controls.Add(this.StaffUsername_textBox);
-            this.Controls.Add(this.StaffPassword_textBox);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.stupaswordpanel);
             this.Controls.Add(this.StaffPhoneNo_textBox);
             this.Controls.Add(this.StaffEmail_textBox);
             this.Controls.Add(this.StaffFullname_textBox);
@@ -238,6 +248,8 @@
             this.student_menu_pn.ResumeLayout(false);
             this.student_header_pn.ResumeLayout(false);
             this.student_header_pn.PerformLayout();
+            this.stupaswordpanel.ResumeLayout(false);
+            this.stupaswordpanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,15 +264,16 @@
         private System.Windows.Forms.Panel student_menu_pn;
         private System.Windows.Forms.Panel student_header_pn;
         private System.Windows.Forms.Label Staff_Details;
-        private System.Windows.Forms.TextBox StaffUsername_textBox;
-        private System.Windows.Forms.TextBox StaffPassword_textBox;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox StaffPhoneNo_textBox;
         private System.Windows.Forms.TextBox StaffEmail_textBox;
         private System.Windows.Forms.TextBox StaffFullname_textBox;
         private System.Windows.Forms.Label StudentPhone_No_label;
         private System.Windows.Forms.Label Student_Email_label;
         private System.Windows.Forms.Label Staff_Namelabel;
+        private System.Windows.Forms.Panel stupaswordpanel;
+        private System.Windows.Forms.TextBox StaffUsername_textBox;
+        private System.Windows.Forms.TextBox StaffPassword_textBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unicom_TIC_Management_System.Model;
 using Unicom_TIC_Management_System.View;
 using Unicom_TIC_Management_System.Views;
 
@@ -14,9 +15,49 @@ namespace Unicom_TIC_Management_System
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+
+        private User currentUser;
+
+        public MainForm(User user)
         {
             InitializeComponent();
+            currentUser = user;
+            LoadUserDetails();
+            
+        }
+        
+        private void LoadUserDetails()
+        {
+            // student access restrictions
+            if (currentUser.Role == "Student")
+            {
+                Course_label.Enabled = false;
+                Attendance_label.Enabled = false;
+                UserDetails_label.Enabled = false;
+                lecturer_label.Enabled = false;
+                Staff_Label.Enabled = false;
+                lbmark.Enabled = false;
+                lbexam.Enabled = false;
+            }
+            else if (currentUser.Role == "Lecturer")
+            {
+                Course_label.Enabled = false;
+                Attendance_label.Enabled = false;
+                UserDetails_label.Enabled = false;
+                Staff_Label.Enabled = false;
+                lbmark.Enabled = false;
+                lbexam.Enabled = false;
+                lbstudent.Enabled = false;
+
+            }
+            else if (currentUser.Role == "Staff")
+            {
+                Course_label.Enabled = false;
+                Attendance_label.Enabled = false;
+                UserDetails_label.Enabled = false;
+                lbmark.Enabled = false;
+                lbexam.Enabled = false;
+            }
             
         }
         public void LoadForm(object formObj)
@@ -40,7 +81,8 @@ namespace Unicom_TIC_Management_System
 
         private void lbtimetable_Click(object sender, EventArgs e)
         {
-            LoadForm(new TimetableForm());
+            var timetableForm = new TimetableForm(currentUser);
+            LoadForm(timetableForm);
         }
 
         private void lbexam_Click(object sender, EventArgs e)
@@ -60,17 +102,20 @@ namespace Unicom_TIC_Management_System
 
         private void lbstudent_Click(object sender, EventArgs e)
         {
-            LoadForm(new StudentForm());
+            var studentForm = new StudentForm(currentUser);
+            LoadForm(studentForm);
         }
 
         private void lblecturer_Click(object sender, EventArgs e)
         {
-            LoadForm(new LecturerForm());
+            var lecturerForm = new LecturerForm(currentUser);
+            LoadForm(lecturerForm);
         }
 
         private void lbstaff_Click(object sender, EventArgs e)
         {
-            LoadForm(new StaffForm());
+            var staffForm = new StaffForm(currentUser);
+            LoadForm(staffForm);
         }
 
         private void Logoutlabel_Click(object sender, EventArgs e)

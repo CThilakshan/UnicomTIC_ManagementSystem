@@ -17,6 +17,8 @@ namespace Unicom_TIC_Management_System.View
 {
     public partial class StudentForm : Form
     {
+        // Class-level variables to hold current user and controllers
+        private User currentUser;
         private StudentController studentController = new StudentController();
         private CourseController courseController = new CourseController();
 
@@ -24,12 +26,30 @@ namespace Unicom_TIC_Management_System.View
         private int selectedUserId = -1;
         private int selectedStudentId = -1;
 
-        public StudentForm()
+        // Constructor that accepts a User object
+        public StudentForm(User user)
         {
+
             InitializeComponent();
+            currentUser = user;
+            HideStudent();
             LoadStudent();
             Loadcourses();
         }
+        private void HideStudent()
+        {
+            if (currentUser.Role == "Student"|| currentUser.Role == "Staff" || currentUser.Role == "Lecturer")
+            {
+                // Hide specific labels for students
+                student_menu_pn.Visible = false;
+                password_panel.Visible = false;
+                
+                
+            }
+
+        }
+
+        
 
         private void LoadStudent()
         {
@@ -105,8 +125,30 @@ namespace Unicom_TIC_Management_System.View
                     return;
                 }
 
-                studentController.InsertStudent(student_name, student_phoneno, student_email, courseId);
-                studentController.InsertUser(student_name, "Student", student_username, student_password, courseId);
+                int studentId;
+
+                // Insert student and get the newly generated Student_ID
+                using (var conn = DBConnection.GetConnection())
+                {
+                    string insertStudentQuery = "INSERT INTO Students (Student_Name, Student_Phone_No, Student_Email, Course_ID) VALUES (@Name, @Phone, @Email, @Course_ID)";
+                    using (var cmd = new SQLiteCommand(insertStudentQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Name", student_name);
+                        cmd.Parameters.AddWithValue("@Phone", student_phoneno);
+                        cmd.Parameters.AddWithValue("@Email", student_email);
+                        cmd.Parameters.AddWithValue("@Course_ID", courseId);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Get the last inserted student ID
+                    using (var cmd = new SQLiteCommand("SELECT last_insert_rowid()", conn))
+                    {
+                        studentId = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+                }
+
+                // Now insert into Users table
+                studentController.InsertUser(student_name, "Student", student_username, student_password, courseId, studentId);
 
                 LoadStudent();
                 ClearForm();
@@ -132,8 +174,7 @@ namespace Unicom_TIC_Management_System.View
                 string student_name = StudentFullname_textBox.Text.Trim();
                 string student_phoneno = StudentPhoneNo_textBox.Text.Trim();
                 string student_email = StudentEmail_textBox.Text.Trim();
-                string student_username = StudentUsername_textBox.Text.Trim();
-                string student_password = StudentPassword_textBox.Text.Trim();
+                
 
                 if (CourseName_comboBox.SelectedValue == null)
                 {
@@ -145,17 +186,16 @@ namespace Unicom_TIC_Management_System.View
 
                 if (string.IsNullOrWhiteSpace(student_name) ||
                     string.IsNullOrWhiteSpace(student_phoneno) ||
-                    string.IsNullOrWhiteSpace(student_email) ||
-                    string.IsNullOrWhiteSpace(student_username) ||
-                    string.IsNullOrWhiteSpace(student_password))
+                    string.IsNullOrWhiteSpace(student_email) )
                 {
                     MessageBox.Show("Please fill in all required fields (Name, Phone, Email, Username, Password).",
                         "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                // Update student and user info
                 studentController.UpdateStudent(selectedStudentId, student_name, student_phoneno, student_email, courseId);
-                studentController.UpdateUser(selectedUserId, student_name, "Student", student_username, student_password, courseId);
+                studentController.UpdateUser(selectedUserId, student_name, "Student",  courseId, selectedStudentId);
 
                 LoadStudent();
                 ClearForm();

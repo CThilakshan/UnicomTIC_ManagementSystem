@@ -30,9 +30,9 @@
         {
             this.student_header_pn = new System.Windows.Forms.Panel();
             this.User_label = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.UserDetailsdataGridView = new System.Windows.Forms.DataGridView();
             this.student_header_pn.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserDetailsdataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // student_header_pn
@@ -55,27 +55,28 @@
             this.User_label.TabIndex = 0;
             this.User_label.Text = "User  Details";
             // 
-            // dataGridView1
+            // UserDetailsdataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(77, 112);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(569, 362);
-            this.dataGridView1.TabIndex = 33;
+            this.UserDetailsdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.UserDetailsdataGridView.Location = new System.Drawing.Point(77, 112);
+            this.UserDetailsdataGridView.Name = "UserDetailsdataGridView";
+            this.UserDetailsdataGridView.Size = new System.Drawing.Size(569, 362);
+            this.UserDetailsdataGridView.TabIndex = 33;
+            this.UserDetailsdataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // UserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(730, 550);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.UserDetailsdataGridView);
             this.Controls.Add(this.student_header_pn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UserDetails";
             this.Text = "UserDetails";
             this.student_header_pn.ResumeLayout(false);
             this.student_header_pn.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserDetailsdataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -84,6 +85,6 @@
 
         private System.Windows.Forms.Panel student_header_pn;
         private System.Windows.Forms.Label User_label;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView UserDetailsdataGridView;
     }
 }

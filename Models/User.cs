@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Unicom_TIC_Management_System.Model
 {
-    internal class User
+    public class User
     {
         public int User_ID {  get; set; }
         public string Name { get; set; }
@@ -27,7 +27,7 @@ namespace Unicom_TIC_Management_System.Model
         /// <summary>
         /// 
         /// </summary>
-        public string Course_ID { get; set; }
+        public int Course_ID { get; set; }
         public string Course_Name { get;set; }
     }
 }

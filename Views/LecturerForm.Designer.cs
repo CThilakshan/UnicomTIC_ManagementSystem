@@ -28,67 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Username_textBox = new System.Windows.Forms.TextBox();
-            this.Password_textBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.Lecturer_dataGridView = new System.Windows.Forms.DataGridView();
             this.CourseName_comboBox = new System.Windows.Forms.ComboBox();
             this.StudnetCoursename_label = new System.Windows.Forms.Label();
-            this.PhoneNo_textBox = new System.Windows.Forms.TextBox();
-            this.Email_textBox = new System.Windows.Forms.TextBox();
+            this.LecturerPhoneNo_textBox = new System.Windows.Forms.TextBox();
+            this.LecturerEmail_textBox = new System.Windows.Forms.TextBox();
             this.StudentPhone_No_label = new System.Windows.Forms.Label();
             this.Student_Email_label = new System.Windows.Forms.Label();
-            this.Delete_button = new System.Windows.Forms.Button();
-            this.Update_button = new System.Windows.Forms.Button();
-            this.Insert_button = new System.Windows.Forms.Button();
-            this.Fullname_textBox = new System.Windows.Forms.TextBox();
+            this.lecturerDelete_button = new System.Windows.Forms.Button();
+            this.LecturerUpdate_button = new System.Windows.Forms.Button();
+            this.LecturerInsert_button = new System.Windows.Forms.Button();
+            this.LecturerFullname_textBox = new System.Windows.Forms.TextBox();
             this.student_menu_pn = new System.Windows.Forms.Panel();
             this.Student_Namelabel = new System.Windows.Forms.Label();
             this.student_header_pn = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.Subject_comboBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.lecPasswordpanel = new System.Windows.Forms.Panel();
+            this.Subject_comboBox = new System.Windows.Forms.ComboBox();
+            this.LecturerUsername_textBox = new System.Windows.Forms.TextBox();
+            this.LecturerPassword_textBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Lecturer_dataGridView)).BeginInit();
             this.student_menu_pn.SuspendLayout();
             this.student_header_pn.SuspendLayout();
+            this.lecPasswordpanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Username_textBox
-            // 
-            this.Username_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Username_textBox.Location = new System.Drawing.Point(281, 268);
-            this.Username_textBox.Name = "Username_textBox";
-            this.Username_textBox.Size = new System.Drawing.Size(325, 21);
-            this.Username_textBox.TabIndex = 44;
-            // 
-            // Password_textBox
-            // 
-            this.Password_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Password_textBox.Location = new System.Drawing.Point(281, 296);
-            this.Password_textBox.Name = "Password_textBox";
-            this.Password_textBox.Size = new System.Drawing.Size(325, 21);
-            this.Password_textBox.TabIndex = 43;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(116, 297);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 15);
-            this.label3.TabIndex = 42;
-            this.label3.Text = "Password";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(116, 269);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 15);
-            this.label2.TabIndex = 41;
-            this.label2.Text = "Username";
             // 
             // Lecturer_dataGridView
             // 
@@ -97,6 +63,7 @@
             this.Lecturer_dataGridView.Name = "Lecturer_dataGridView";
             this.Lecturer_dataGridView.Size = new System.Drawing.Size(570, 195);
             this.Lecturer_dataGridView.TabIndex = 40;
+            this.Lecturer_dataGridView.SelectionChanged += new System.EventHandler(this.Lecturer_dataGridView_SelectionChanged);
             // 
             // CourseName_comboBox
             // 
@@ -117,21 +84,21 @@
             this.StudnetCoursename_label.TabIndex = 38;
             this.StudnetCoursename_label.Text = "Course Name";
             // 
-            // PhoneNo_textBox
+            // LecturerPhoneNo_textBox
             // 
-            this.PhoneNo_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PhoneNo_textBox.Location = new System.Drawing.Point(281, 156);
-            this.PhoneNo_textBox.Name = "PhoneNo_textBox";
-            this.PhoneNo_textBox.Size = new System.Drawing.Size(325, 21);
-            this.PhoneNo_textBox.TabIndex = 37;
+            this.LecturerPhoneNo_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LecturerPhoneNo_textBox.Location = new System.Drawing.Point(281, 156);
+            this.LecturerPhoneNo_textBox.Name = "LecturerPhoneNo_textBox";
+            this.LecturerPhoneNo_textBox.Size = new System.Drawing.Size(325, 21);
+            this.LecturerPhoneNo_textBox.TabIndex = 37;
             // 
-            // Email_textBox
+            // LecturerEmail_textBox
             // 
-            this.Email_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Email_textBox.Location = new System.Drawing.Point(281, 184);
-            this.Email_textBox.Name = "Email_textBox";
-            this.Email_textBox.Size = new System.Drawing.Size(325, 21);
-            this.Email_textBox.TabIndex = 36;
+            this.LecturerEmail_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LecturerEmail_textBox.Location = new System.Drawing.Point(281, 184);
+            this.LecturerEmail_textBox.Name = "LecturerEmail_textBox";
+            this.LecturerEmail_textBox.Size = new System.Drawing.Size(325, 21);
+            this.LecturerEmail_textBox.TabIndex = 36;
             // 
             // StudentPhone_No_label
             // 
@@ -153,50 +120,52 @@
             this.Student_Email_label.TabIndex = 33;
             this.Student_Email_label.Text = "Email Address";
             // 
-            // Delete_button
+            // lecturerDelete_button
             // 
-            this.Delete_button.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Delete_button.Location = new System.Drawing.Point(500, 7);
-            this.Delete_button.Name = "Delete_button";
-            this.Delete_button.Size = new System.Drawing.Size(75, 30);
-            this.Delete_button.TabIndex = 17;
-            this.Delete_button.Text = "Delete";
-            this.Delete_button.UseVisualStyleBackColor = true;
+            this.lecturerDelete_button.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lecturerDelete_button.Location = new System.Drawing.Point(500, 7);
+            this.lecturerDelete_button.Name = "lecturerDelete_button";
+            this.lecturerDelete_button.Size = new System.Drawing.Size(75, 30);
+            this.lecturerDelete_button.TabIndex = 17;
+            this.lecturerDelete_button.Text = "Delete";
+            this.lecturerDelete_button.UseVisualStyleBackColor = true;
+            this.lecturerDelete_button.Click += new System.EventHandler(this.lecturerDelete_button_Click);
             // 
-            // Update_button
+            // LecturerUpdate_button
             // 
-            this.Update_button.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Update_button.Location = new System.Drawing.Point(391, 7);
-            this.Update_button.Name = "Update_button";
-            this.Update_button.Size = new System.Drawing.Size(75, 30);
-            this.Update_button.TabIndex = 16;
-            this.Update_button.Text = "Update";
-            this.Update_button.UseVisualStyleBackColor = true;
+            this.LecturerUpdate_button.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LecturerUpdate_button.Location = new System.Drawing.Point(391, 7);
+            this.LecturerUpdate_button.Name = "LecturerUpdate_button";
+            this.LecturerUpdate_button.Size = new System.Drawing.Size(75, 30);
+            this.LecturerUpdate_button.TabIndex = 16;
+            this.LecturerUpdate_button.Text = "Update";
+            this.LecturerUpdate_button.UseVisualStyleBackColor = true;
+            this.LecturerUpdate_button.Click += new System.EventHandler(this.LecturerUpdate_button_Click);
             // 
-            // Insert_button
+            // LecturerInsert_button
             // 
-            this.Insert_button.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Insert_button.Location = new System.Drawing.Point(282, 7);
-            this.Insert_button.Name = "Insert_button";
-            this.Insert_button.Size = new System.Drawing.Size(75, 30);
-            this.Insert_button.TabIndex = 15;
-            this.Insert_button.Text = "Insert";
-            this.Insert_button.UseVisualStyleBackColor = true;
-            this.Insert_button.Click += new System.EventHandler(this.Insert_button_Click);
+            this.LecturerInsert_button.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LecturerInsert_button.Location = new System.Drawing.Point(282, 7);
+            this.LecturerInsert_button.Name = "LecturerInsert_button";
+            this.LecturerInsert_button.Size = new System.Drawing.Size(75, 30);
+            this.LecturerInsert_button.TabIndex = 15;
+            this.LecturerInsert_button.Text = "Insert";
+            this.LecturerInsert_button.UseVisualStyleBackColor = true;
+            this.LecturerInsert_button.Click += new System.EventHandler(this.Insert_button_Click);
             // 
-            // Fullname_textBox
+            // LecturerFullname_textBox
             // 
-            this.Fullname_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Fullname_textBox.Location = new System.Drawing.Point(281, 128);
-            this.Fullname_textBox.Name = "Fullname_textBox";
-            this.Fullname_textBox.Size = new System.Drawing.Size(325, 21);
-            this.Fullname_textBox.TabIndex = 35;
+            this.LecturerFullname_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LecturerFullname_textBox.Location = new System.Drawing.Point(281, 128);
+            this.LecturerFullname_textBox.Name = "LecturerFullname_textBox";
+            this.LecturerFullname_textBox.Size = new System.Drawing.Size(325, 21);
+            this.LecturerFullname_textBox.TabIndex = 35;
             // 
             // student_menu_pn
             // 
-            this.student_menu_pn.Controls.Add(this.Delete_button);
-            this.student_menu_pn.Controls.Add(this.Update_button);
-            this.student_menu_pn.Controls.Add(this.Insert_button);
+            this.student_menu_pn.Controls.Add(this.lecturerDelete_button);
+            this.student_menu_pn.Controls.Add(this.LecturerUpdate_button);
+            this.student_menu_pn.Controls.Add(this.LecturerInsert_button);
             this.student_menu_pn.Dock = System.Windows.Forms.DockStyle.Top;
             this.student_menu_pn.Location = new System.Drawing.Point(0, 43);
             this.student_menu_pn.Name = "student_menu_pn";
@@ -233,15 +202,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Lecturer  Details";
             // 
-            // Subject_comboBox
-            // 
-            this.Subject_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Subject_comboBox.FormattingEnabled = true;
-            this.Subject_comboBox.Location = new System.Drawing.Point(281, 240);
-            this.Subject_comboBox.Name = "Subject_comboBox";
-            this.Subject_comboBox.Size = new System.Drawing.Size(325, 21);
-            this.Subject_comboBox.TabIndex = 46;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -252,25 +212,78 @@
             this.label4.TabIndex = 45;
             this.label4.Text = "Subject Name";
             // 
+            // lecPasswordpanel
+            // 
+            this.lecPasswordpanel.Controls.Add(this.LecturerUsername_textBox);
+            this.lecPasswordpanel.Controls.Add(this.LecturerPassword_textBox);
+            this.lecPasswordpanel.Controls.Add(this.label3);
+            this.lecPasswordpanel.Controls.Add(this.label2);
+            this.lecPasswordpanel.Location = new System.Drawing.Point(0, 263);
+            this.lecPasswordpanel.Name = "lecPasswordpanel";
+            this.lecPasswordpanel.Size = new System.Drawing.Size(730, 53);
+            this.lecPasswordpanel.TabIndex = 47;
+            // 
+            // Subject_comboBox
+            // 
+            this.Subject_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Subject_comboBox.FormattingEnabled = true;
+            this.Subject_comboBox.Location = new System.Drawing.Point(281, 240);
+            this.Subject_comboBox.Name = "Subject_comboBox";
+            this.Subject_comboBox.Size = new System.Drawing.Size(325, 21);
+            this.Subject_comboBox.TabIndex = 46;
+            // 
+            // LecturerUsername_textBox
+            // 
+            this.LecturerUsername_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LecturerUsername_textBox.Location = new System.Drawing.Point(283, 2);
+            this.LecturerUsername_textBox.Name = "LecturerUsername_textBox";
+            this.LecturerUsername_textBox.Size = new System.Drawing.Size(325, 21);
+            this.LecturerUsername_textBox.TabIndex = 52;
+            // 
+            // LecturerPassword_textBox
+            // 
+            this.LecturerPassword_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LecturerPassword_textBox.Location = new System.Drawing.Point(283, 30);
+            this.LecturerPassword_textBox.Name = "LecturerPassword_textBox";
+            this.LecturerPassword_textBox.Size = new System.Drawing.Size(325, 21);
+            this.LecturerPassword_textBox.TabIndex = 51;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(118, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 15);
+            this.label3.TabIndex = 50;
+            this.label3.Text = "Password";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(118, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 15);
+            this.label2.TabIndex = 49;
+            this.label2.Text = "Username";
+            // 
             // LecturerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(730, 550);
+            this.Controls.Add(this.lecPasswordpanel);
             this.Controls.Add(this.Subject_comboBox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.Username_textBox);
-            this.Controls.Add(this.Password_textBox);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.Lecturer_dataGridView);
             this.Controls.Add(this.CourseName_comboBox);
             this.Controls.Add(this.StudnetCoursename_label);
-            this.Controls.Add(this.PhoneNo_textBox);
-            this.Controls.Add(this.Email_textBox);
+            this.Controls.Add(this.LecturerPhoneNo_textBox);
+            this.Controls.Add(this.LecturerEmail_textBox);
             this.Controls.Add(this.StudentPhone_No_label);
             this.Controls.Add(this.Student_Email_label);
-            this.Controls.Add(this.Fullname_textBox);
+            this.Controls.Add(this.LecturerFullname_textBox);
             this.Controls.Add(this.student_menu_pn);
             this.Controls.Add(this.Student_Namelabel);
             this.Controls.Add(this.student_header_pn);
@@ -281,33 +294,35 @@
             this.student_menu_pn.ResumeLayout(false);
             this.student_header_pn.ResumeLayout(false);
             this.student_header_pn.PerformLayout();
+            this.lecPasswordpanel.ResumeLayout(false);
+            this.lecPasswordpanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox Username_textBox;
-        private System.Windows.Forms.TextBox Password_textBox;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView Lecturer_dataGridView;
         private System.Windows.Forms.ComboBox CourseName_comboBox;
         private System.Windows.Forms.Label StudnetCoursename_label;
-        private System.Windows.Forms.TextBox PhoneNo_textBox;
-        private System.Windows.Forms.TextBox Email_textBox;
+        private System.Windows.Forms.TextBox LecturerPhoneNo_textBox;
+        private System.Windows.Forms.TextBox LecturerEmail_textBox;
         private System.Windows.Forms.Label StudentPhone_No_label;
         private System.Windows.Forms.Label Student_Email_label;
-        private System.Windows.Forms.Button Delete_button;
-        private System.Windows.Forms.Button Update_button;
-        private System.Windows.Forms.Button Insert_button;
-        private System.Windows.Forms.TextBox Fullname_textBox;
+        private System.Windows.Forms.Button lecturerDelete_button;
+        private System.Windows.Forms.Button LecturerUpdate_button;
+        private System.Windows.Forms.Button LecturerInsert_button;
+        private System.Windows.Forms.TextBox LecturerFullname_textBox;
         private System.Windows.Forms.Panel student_menu_pn;
         private System.Windows.Forms.Label Student_Namelabel;
         private System.Windows.Forms.Panel student_header_pn;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox Subject_comboBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel lecPasswordpanel;
+        private System.Windows.Forms.TextBox LecturerUsername_textBox;
+        private System.Windows.Forms.TextBox LecturerPassword_textBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox Subject_comboBox;
     }
 }

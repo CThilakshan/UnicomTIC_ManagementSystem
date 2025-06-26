@@ -70,10 +70,10 @@ namespace Unicom_TIC_Management_System.Controller
         }
 
         // Insert User record into Users table
-        public void InsertUser(string name, string role, string username, string password, int courseId)
+        public void InsertUser(string name, string role, string username, string password, int courseId,int studentId)
         {
             // Ensure your Users table actually has a Course_ID column or remove this parameter
-            string insertQuery = "INSERT INTO Users (Name, Role, Username, Password, Course_ID) VALUES (@Name, @Role, @Username, @Password, @Course_ID)";
+            string insertQuery = "INSERT INTO Users (Name, Role, Username, Password, Course_ID,Student_ID) VALUES (@Name, @Role, @Username, @Password, @Course_ID,@Student_ID)";
 
             try
             {
@@ -85,6 +85,7 @@ namespace Unicom_TIC_Management_System.Controller
                     cmd.Parameters.AddWithValue("@Username", username);
                     cmd.Parameters.AddWithValue("@Password", password);
                     cmd.Parameters.AddWithValue("@Course_ID", courseId);
+                    cmd.Parameters.AddWithValue("@Student_ID", studentId);
                     cmd.ExecuteNonQuery();
                 }
                 MessageBox.Show("User inserted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -119,9 +120,9 @@ namespace Unicom_TIC_Management_System.Controller
             }
         }
 
-        public void UpdateUser(int userId, string name, string role, string username, string password, int courseId)
+        public void UpdateUser(int userId, string name, string role,  int courseId, int studentId)
         {
-            string updateQuery = "UPDATE Users SET Name = @Name, Role = @Role, Username = @Username, Password = @Password, Course_ID = @Course_ID WHERE User_ID = @UserID";
+            string updateQuery = "UPDATE Users SET Name = @Name, Role = @Role,  Course_ID = @Course_ID,Student_ID =@Student_ID WHERE User_ID = @UserID";
 
             try
             {
@@ -130,9 +131,8 @@ namespace Unicom_TIC_Management_System.Controller
                 {
                     cmd.Parameters.AddWithValue("@Name", name);
                     cmd.Parameters.AddWithValue("@Role", role);
-                    cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Password", password);
                     cmd.Parameters.AddWithValue("@Course_ID", courseId);
+                    cmd.Parameters.AddWithValue("@Student_ID", studentId);
                     cmd.Parameters.AddWithValue("@UserID", userId);
                     cmd.ExecuteNonQuery();
                 }
@@ -167,6 +167,43 @@ namespace Unicom_TIC_Management_System.Controller
                 MessageBox.Show("Error deleting student:\n" + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public List<Student> SearchStudentsByName(string keyword)
+        {
+            string searchQuery = "SELECT * FROM Students WHERE Student_Name LIKE @Student_Name";
+            List<Student> studentList = new List<Student>();
+
+            try
+            {
+                using (var conn = DBConnection.GetConnection())
+                {
+                    conn.Open(); // Open the connection before executing commands
+
+                    using (var cmd = new SQLiteCommand(searchQuery, conn))
+                    {
+                        // Parameter name must match the query, and add % for LIKE wildcard
+                        cmd.Parameters.AddWithValue("@Student_Name", "%" + keyword + "%");
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                studentList.Add(new Student
+                                {
+                                    Student_ID = reader.GetInt32(reader.GetOrdinal("Student_ID")),
+                                    Student_Name = reader.GetString(reader.GetOrdinal("Student_Name"))
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while searching for students:\n" + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return studentList;
+        }
 
         // Get a single student by ID
         public Student GetStudentById(int studentId)
@@ -190,6 +227,7 @@ namespace Unicom_TIC_Management_System.Controller
                                 Student_Phone_No = reader.GetString(2),
                                 Student_Email = reader.GetString(3),
                                 Course_ID = reader.GetInt32(4).ToString()
+
                             };
                         }
                     }

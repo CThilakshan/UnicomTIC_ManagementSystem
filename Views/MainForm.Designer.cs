@@ -31,17 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.Centerpanel = new System.Windows.Forms.Panel();
             this.Leftpanel = new System.Windows.Forms.Panel();
+            this.UserDetails_label = new System.Windows.Forms.Label();
+            this.Attendance_label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Logoutlabel = new System.Windows.Forms.Label();
             this.lbmark = new System.Windows.Forms.Label();
             this.lbexam = new System.Windows.Forms.Label();
-            this.lbCourse = new System.Windows.Forms.Label();
+            this.Course_label = new System.Windows.Forms.Label();
             this.lbtimetable = new System.Windows.Forms.Label();
-            this.lbstaff = new System.Windows.Forms.Label();
-            this.lblecturer = new System.Windows.Forms.Label();
+            this.Staff_Label = new System.Windows.Forms.Label();
+            this.lecturer_label = new System.Windows.Forms.Label();
             this.lbstudent = new System.Windows.Forms.Label();
-            this.Attendance_label = new System.Windows.Forms.Label();
-            this.User_label = new System.Windows.Forms.Label();
             this.Leftpanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,22 +56,45 @@
             // Leftpanel
             // 
             this.Leftpanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Leftpanel.Controls.Add(this.User_label);
+            this.Leftpanel.Controls.Add(this.UserDetails_label);
             this.Leftpanel.Controls.Add(this.Attendance_label);
             this.Leftpanel.Controls.Add(this.panel1);
             this.Leftpanel.Controls.Add(this.Logoutlabel);
             this.Leftpanel.Controls.Add(this.lbmark);
             this.Leftpanel.Controls.Add(this.lbexam);
-            this.Leftpanel.Controls.Add(this.lbCourse);
+            this.Leftpanel.Controls.Add(this.Course_label);
             this.Leftpanel.Controls.Add(this.lbtimetable);
-            this.Leftpanel.Controls.Add(this.lbstaff);
-            this.Leftpanel.Controls.Add(this.lblecturer);
+            this.Leftpanel.Controls.Add(this.Staff_Label);
+            this.Leftpanel.Controls.Add(this.lecturer_label);
             this.Leftpanel.Controls.Add(this.lbstudent);
             this.Leftpanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.Leftpanel.Location = new System.Drawing.Point(0, 0);
             this.Leftpanel.Name = "Leftpanel";
             this.Leftpanel.Size = new System.Drawing.Size(171, 550);
             this.Leftpanel.TabIndex = 2;
+            // 
+            // UserDetails_label
+            // 
+            this.UserDetails_label.AutoSize = true;
+            this.UserDetails_label.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserDetails_label.Location = new System.Drawing.Point(25, 353);
+            this.UserDetails_label.Name = "UserDetails_label";
+            this.UserDetails_label.Size = new System.Drawing.Size(120, 25);
+            this.UserDetails_label.TabIndex = 10;
+            this.UserDetails_label.Text = "User Details";
+            this.UserDetails_label.Click += new System.EventHandler(this.User_label_Click);
+            // 
+            // Attendance_label
+            // 
+            this.Attendance_label.AutoSize = true;
+            this.Attendance_label.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Attendance_label.ForeColor = System.Drawing.Color.Black;
+            this.Attendance_label.Location = new System.Drawing.Point(25, 314);
+            this.Attendance_label.Name = "Attendance_label";
+            this.Attendance_label.Size = new System.Drawing.Size(108, 25);
+            this.Attendance_label.TabIndex = 9;
+            this.Attendance_label.Text = "Attendance";
+            this.Attendance_label.Click += new System.EventHandler(this.Attendance_label_Click);
             // 
             // panel1
             // 
@@ -98,7 +121,7 @@
             // 
             this.lbmark.AutoSize = true;
             this.lbmark.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbmark.Location = new System.Drawing.Point(25, 107);
+            this.lbmark.Location = new System.Drawing.Point(25, 119);
             this.lbmark.Name = "lbmark";
             this.lbmark.Size = new System.Drawing.Size(66, 25);
             this.lbmark.TabIndex = 6;
@@ -109,23 +132,23 @@
             // 
             this.lbexam.AutoSize = true;
             this.lbexam.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbexam.Location = new System.Drawing.Point(25, 74);
+            this.lbexam.Location = new System.Drawing.Point(25, 80);
             this.lbexam.Name = "lbexam";
             this.lbexam.Size = new System.Drawing.Size(69, 25);
             this.lbexam.TabIndex = 5;
             this.lbexam.Text = "Exams";
             this.lbexam.Click += new System.EventHandler(this.lbexam_Click);
             // 
-            // lbCourse
+            // Course_label
             // 
-            this.lbCourse.AutoSize = true;
-            this.lbCourse.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCourse.Location = new System.Drawing.Point(25, 297);
-            this.lbCourse.Name = "lbCourse";
-            this.lbCourse.Size = new System.Drawing.Size(67, 25);
-            this.lbCourse.TabIndex = 4;
-            this.lbCourse.Text = "Course";
-            this.lbCourse.Click += new System.EventHandler(this.lbCourse_Click);
+            this.Course_label.AutoSize = true;
+            this.Course_label.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Course_label.Location = new System.Drawing.Point(25, 275);
+            this.Course_label.Name = "Course_label";
+            this.Course_label.Size = new System.Drawing.Size(67, 25);
+            this.Course_label.TabIndex = 4;
+            this.Course_label.Text = "Course";
+            this.Course_label.Click += new System.EventHandler(this.lbCourse_Click);
             // 
             // lbtimetable
             // 
@@ -138,61 +161,38 @@
             this.lbtimetable.Text = "Time Table";
             this.lbtimetable.Click += new System.EventHandler(this.lbtimetable_Click);
             // 
-            // lbstaff
+            // Staff_Label
             // 
-            this.lbstaff.AutoSize = true;
-            this.lbstaff.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbstaff.Location = new System.Drawing.Point(25, 236);
-            this.lbstaff.Name = "lbstaff";
-            this.lbstaff.Size = new System.Drawing.Size(65, 25);
-            this.lbstaff.TabIndex = 2;
-            this.lbstaff.Text = "Staffs";
-            this.lbstaff.Click += new System.EventHandler(this.lbstaff_Click);
+            this.Staff_Label.AutoSize = true;
+            this.Staff_Label.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Staff_Label.Location = new System.Drawing.Point(25, 236);
+            this.Staff_Label.Name = "Staff_Label";
+            this.Staff_Label.Size = new System.Drawing.Size(65, 25);
+            this.Staff_Label.TabIndex = 2;
+            this.Staff_Label.Text = "Staffs";
+            this.Staff_Label.Click += new System.EventHandler(this.lbstaff_Click);
             // 
-            // lblecturer
+            // lecturer_label
             // 
-            this.lblecturer.AutoSize = true;
-            this.lblecturer.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblecturer.Location = new System.Drawing.Point(25, 203);
-            this.lblecturer.Name = "lblecturer";
-            this.lblecturer.Size = new System.Drawing.Size(90, 25);
-            this.lblecturer.TabIndex = 1;
-            this.lblecturer.Text = "Lecturers";
-            this.lblecturer.Click += new System.EventHandler(this.lblecturer_Click);
+            this.lecturer_label.AutoSize = true;
+            this.lecturer_label.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lecturer_label.Location = new System.Drawing.Point(25, 197);
+            this.lecturer_label.Name = "lecturer_label";
+            this.lecturer_label.Size = new System.Drawing.Size(90, 25);
+            this.lecturer_label.TabIndex = 1;
+            this.lecturer_label.Text = "Lecturers";
+            this.lecturer_label.Click += new System.EventHandler(this.lblecturer_Click);
             // 
             // lbstudent
             // 
             this.lbstudent.AutoSize = true;
             this.lbstudent.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbstudent.Location = new System.Drawing.Point(25, 170);
+            this.lbstudent.Location = new System.Drawing.Point(25, 158);
             this.lbstudent.Name = "lbstudent";
             this.lbstudent.Size = new System.Drawing.Size(87, 25);
             this.lbstudent.TabIndex = 0;
             this.lbstudent.Text = "Students";
             this.lbstudent.Click += new System.EventHandler(this.lbstudent_Click);
-            // 
-            // Attendance_label
-            // 
-            this.Attendance_label.AutoSize = true;
-            this.Attendance_label.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Attendance_label.ForeColor = System.Drawing.Color.Black;
-            this.Attendance_label.Location = new System.Drawing.Point(25, 326);
-            this.Attendance_label.Name = "Attendance_label";
-            this.Attendance_label.Size = new System.Drawing.Size(108, 25);
-            this.Attendance_label.TabIndex = 9;
-            this.Attendance_label.Text = "Attendance";
-            this.Attendance_label.Click += new System.EventHandler(this.Attendance_label_Click);
-            // 
-            // User_label
-            // 
-            this.User_label.AutoSize = true;
-            this.User_label.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.User_label.Location = new System.Drawing.Point(25, 355);
-            this.User_label.Name = "User_label";
-            this.User_label.Size = new System.Drawing.Size(120, 25);
-            this.User_label.TabIndex = 10;
-            this.User_label.Text = "User Details";
-            this.User_label.Click += new System.EventHandler(this.User_label_Click);
             // 
             // MainForm
             // 
@@ -217,14 +217,14 @@
         private System.Windows.Forms.Panel Leftpanel;
         private System.Windows.Forms.Label lbmark;
         private System.Windows.Forms.Label lbexam;
-        private System.Windows.Forms.Label lbCourse;
+        private System.Windows.Forms.Label Course_label;
         private System.Windows.Forms.Label lbtimetable;
-        private System.Windows.Forms.Label lbstaff;
-        private System.Windows.Forms.Label lblecturer;
+        private System.Windows.Forms.Label Staff_Label;
+        private System.Windows.Forms.Label lecturer_label;
         private System.Windows.Forms.Label lbstudent;
         private System.Windows.Forms.Label Logoutlabel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label Attendance_label;
-        private System.Windows.Forms.Label User_label;
+        private System.Windows.Forms.Label UserDetails_label;
     }
 }

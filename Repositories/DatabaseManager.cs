@@ -96,10 +96,13 @@ namespace Unicom_TIC_Management_System.Repositories
                         Subject_ID INTEGER NOT NULL,
                         Course_ID INTEGER NOT NULL,
                         Room_ID INTEGER NOT NULL,
+                        Lecturer_ID INTEGER NOT NULL,
                         FOREIGN KEY (Subject_ID) REFERENCES Subjects(Subject_ID),
                         FOREIGN KEY (Course_ID) REFERENCES Courses(Course_ID),
+                        FOREIGN KEY (Lecturer_ID) REFERENCES Lecturers(Lecturer_ID),
                         FOREIGN KEY (Room_ID) REFERENCES Rooms(Room_ID)
                     );
+
                       CREATE TABLE IF NOT EXISTS Users (
                         User_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                         Name TEXT NOT NULL,

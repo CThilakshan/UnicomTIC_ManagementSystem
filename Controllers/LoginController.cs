@@ -1,33 +1,73 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unicom_TIC_Management_System.Model;
+using Unicom_TIC_Management_System.Repositories;
 
 namespace Unicom_TIC_Management_System.Controllers
 {
     internal class LoginController
     {
-        public bool userlogin(string username, string password)
+        public User Login(string username, string password)
         {
-            // Check for empty inputs
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show("Please enter both username and password.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            // Hardcoded credentials check
+            // Hardcoded Admin Check
             if (username == "admin" && password == "admin123")
             {
-                return true; // Login successful
+                return new User
+                {
+                    Name = "Administrator",
+                    Role = "Admin"
+                };
             }
-            else
+
+            string query = "SELECT * FROM Users WHERE Username = @Username AND Password = @Password";
+
+            using (var conn = DBConnection.GetConnection())
             {
-                MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.Parameters.AddWithValue("@Password", password);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string role = reader["Role"].ToString();
+
+                            var user = new User
+                            {
+                                Name = reader["Name"].ToString(),
+                                Role = role
+                            };
+
+                            if (role == "Student")
+                            {
+                                user.Student_ID = Convert.ToInt32(reader["Student_ID"]);
+                                user.Course_ID = Convert.ToInt32(reader["Course_ID"]);
+                            }
+                            else if (role == "Lecturer")
+                            {
+                                user.Lecturer_ID = Convert.ToInt32(reader["Lecturer_ID"]);
+                                user.Course_ID = Convert.ToInt32(reader["Course_ID"]);
+                            }
+
+                            return user;
+                        }
+                    }
+                }
             }
+
+            return null;
         }
+
+
+
     }
 }
+

@@ -47,11 +47,54 @@ namespace Unicom_TIC_Management_System.Controllers
 
             return lecturerList;
         }
-        public void InsertLecturer(string name, string phone, string email, int subjectId, int courseId)
+        public List<Lecturer> GetLecturersBySubjectId(int subjectId)
         {
+            var lecturers = new List<Lecturer>();
+
+            using (var conn = DBConnection.GetConnection())
+            {
+                string query = @"
+                    SELECT DISTINCT l.Lecturer_ID, l.Lecturer_Name, l.Lecturer_Phone_No, l.Lecturer_Email,
+                                    l.Subject_ID, sub.Subject_Name, l.Course_ID, c.Course_Name
+                    FROM Lecturers l
+                    JOIN Subjects sub ON l.Subject_ID = sub.Subject_ID
+                    JOIN Courses c ON l.Course_ID = c.Course_ID
+                    WHERE l.Subject_ID = @Subject_ID";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Subject_ID", subjectId);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lecturers.Add(new Lecturer
+                            {
+                                Lecturer_ID = reader.GetInt32(0),
+                                Lecturer_Name = reader.GetString(1),
+                                Lecturer_Phone_No = reader.IsDBNull(2) ? null : reader.GetString(2),
+                                Lecturer_Email = reader.IsDBNull(3) ? null : reader.GetString(3),
+                                Subject_ID = reader.GetInt32(4),
+                                Subject_Name = reader.IsDBNull(5) ? null : reader.GetString(5),
+                                Course_ID = reader.GetInt32(6),
+                                Course_Name = reader.IsDBNull(7) ? null : reader.GetString(7)
+                            });
+                        }
+                    }
+                }
+            }
+
+            return lecturers;
+        }
+        public int InsertLecturer(string name, string phone, string email, int subjectId, int courseId)
+        {
+            int lecturerId = -1;
+
             string insertQuery = @"
-                INSERT INTO Lecturers (Lecturer_Name, Lecturer_Phone_No, Lecturer_Email, Subject_ID, Course_ID)
-                VALUES (@Name, @Phone, @Email, @Subject_ID, @Course_ID)";
+            INSERT INTO Lecturers (Lecturer_Name, Lecturer_Phone_No, Lecturer_Email, Subject_ID, Course_ID)
+            VALUES (@Name, @Phone, @Email, @Subject_ID, @Course_ID);
+            SELECT last_insert_rowid();";
 
             try
             {
@@ -63,7 +106,8 @@ namespace Unicom_TIC_Management_System.Controllers
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@Subject_ID", subjectId);
                     cmd.Parameters.AddWithValue("@Course_ID", courseId);
-                    cmd.ExecuteNonQuery();
+
+                    lecturerId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
 
                 MessageBox.Show("Lecturer inserted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -72,6 +116,8 @@ namespace Unicom_TIC_Management_System.Controllers
             {
                 MessageBox.Show("An error occurred while inserting Lecturer:\n" + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            return lecturerId;
         }
 
         public void InsertUser(string name, string role, string username, string password, int courseId, int lecturerId)
@@ -107,12 +153,12 @@ namespace Unicom_TIC_Management_System.Controllers
         {
             string updateQuery = @"
                 UPDATE Lecturers 
-                SET Lecturer_Name = @Name,
-                    Lecturer_Phone_No = @Phone,
-                    Lecturer_Email = @Email,
-                    Subject_ID = @Subject_ID,
-                    Course_ID = @Course_ID
-                WHERE Lecturer_ID = @Lecturer_ID";
+                SET Lecturer_Name = @Name, 
+                    Lecturer_Phone_No = @Phone, 
+                    Lecturer_Email = @Email, 
+                    Subject_ID = @Subject_ID, 
+                    Course_ID = @Course_ID 
+                WHERE Lecturer_ID = @LecturerID";
 
             try
             {
@@ -124,7 +170,7 @@ namespace Unicom_TIC_Management_System.Controllers
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@Subject_ID", subjectId);
                     cmd.Parameters.AddWithValue("@Course_ID", courseId);
-                    cmd.Parameters.AddWithValue("@Lecturer_ID", lecturerId);
+                    cmd.Parameters.AddWithValue("@LecturerID", lecturerId);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -136,17 +182,17 @@ namespace Unicom_TIC_Management_System.Controllers
                 MessageBox.Show("An error occurred while updating the lecturer:\n" + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void UpdateUser(int userId, string name, string role, string username, string password, int courseId, int lecturerId)
+        public void UpdateUser(int userId, string name, string role, int courseId, int lecturerId)
         {
             string updateQuery = @"
                 UPDATE Users 
-                SET Name = @Name,
+                SET 
+                    Name = @Name,
                     Role = @Role,
-                    Username = @Username,
-                    Password = @Password,
                     Course_ID = @Course_ID,
                     Lecturer_ID = @Lecturer_ID
-                WHERE User_ID = @User_ID";
+                WHERE 
+                    User_ID = @User_ID";
 
             try
             {
@@ -155,8 +201,6 @@ namespace Unicom_TIC_Management_System.Controllers
                 {
                     cmd.Parameters.AddWithValue("@Name", name);
                     cmd.Parameters.AddWithValue("@Role", role);
-                    cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Password", password); // Consider hashing
                     cmd.Parameters.AddWithValue("@Course_ID", courseId);
                     cmd.Parameters.AddWithValue("@Lecturer_ID", lecturerId);
                     cmd.Parameters.AddWithValue("@User_ID", userId);
@@ -168,42 +212,35 @@ namespace Unicom_TIC_Management_System.Controllers
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred while updating the user:\n" + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred while updating the user:\n{ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void DeleteLecturerAndUser(int lecturerId)
+        public void DeleteLecturer(int lecturerId)
         {
-            string deleteUserQuery = "DELETE FROM Users WHERE Lecturer_ID = @Lecturer_ID";
             string deleteLecturerQuery = "DELETE FROM Lecturers WHERE Lecturer_ID = @Lecturer_ID";
 
             try
             {
                 using (var conn = DBConnection.GetConnection())
+                using (var cmd = new SQLiteCommand(deleteLecturerQuery, conn))
                 {
-                    conn.Open();
-                    using (var transaction = conn.BeginTransaction())
+                    cmd.Parameters.AddWithValue("@Lecturer_ID", lecturerId);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
                     {
-                        using (var cmdUser = new SQLiteCommand(deleteUserQuery, conn))
-                        {
-                            cmdUser.Parameters.AddWithValue("@Lecturer_ID", lecturerId);
-                            cmdUser.ExecuteNonQuery();
-                        }
-
-                        using (var cmdLecturer = new SQLiteCommand(deleteLecturerQuery, conn))
-                        {
-                            cmdLecturer.Parameters.AddWithValue("@Lecturer_ID", lecturerId);
-                            cmdLecturer.ExecuteNonQuery();
-                        }
-
-                        transaction.Commit();
+                        MessageBox.Show("Lecturer deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No lecturer found with the specified ID.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-
-                MessageBox.Show("Lecturer and user deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred while deleting lecturer and user:\n" + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred while deleting the lecturer:\n" + ex.Message,
+                                "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public Lecturer GetLecturerById(int lecturerId)
