@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unicom_TIC_Management_System.Controllers;
+using Unicom_TIC_Management_System.Model;
 
 namespace Unicom_TIC_Management_System.View
 {
@@ -17,25 +18,37 @@ namespace Unicom_TIC_Management_System.View
         private CourseController courseController = new CourseController();
         private SubjectController subjectController = new SubjectController();
         private int selectedExamId = -1;
-        public ExamForm()
+        private User currentUser;
+
+        public ExamForm(User user)
         {
             InitializeComponent();
+            currentUser = user;
             Exam_dateTimePicker.Format = DateTimePickerFormat.Custom;
             Exam_dateTimePicker.CustomFormat = "yyyy-MM-dd";
             LoadExams();
             LoadCourses();
+            HideExam();
             this.CourseName_comboBox.SelectedIndexChanged += new System.EventHandler(this.CourseName_comboBox_SelectedIndexChanged);
+            
+        }
+        private void HideExam()
+        {
+            if (currentUser.Role == "Student" || currentUser.Role == "Lecturer" || currentUser.Role == "Staff")
+            {
+                student_menu_pn.Visible = false;
+            }
 
         }
         private void LoadExams()
         {
             Exam_dataGridView.DataSource = null;
-            Exam_dataGridView.DataSource = examController.GetAllExams(); // assumes GetAllExams() returns List<Exam>
+            Exam_dataGridView.DataSource = examController.GetAllExams(); 
 
             Exam_dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             Exam_dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
-            // Hide internal IDs
+           
             if (Exam_dataGridView.Columns["Subject_ID"] != null)
                 Exam_dataGridView.Columns["Subject_ID"].Visible = false;
 

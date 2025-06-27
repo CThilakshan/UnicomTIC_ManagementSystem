@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unicom_TIC_Management_System.Controller;
 using Unicom_TIC_Management_System.Controllers;
+using Unicom_TIC_Management_System.Model;
 
 namespace Unicom_TIC_Management_System.View
 {
@@ -21,15 +22,24 @@ namespace Unicom_TIC_Management_System.View
         private SubjectController subjectController = new SubjectController();
         private StudentController studentController = new StudentController();
         private int selectedMarkId = -1;
-        public MarkForm()
+        private User currentUser;
+        public MarkForm(User user)
         {
             InitializeComponent();
             LoadMarks();
             LoadCourses();
             LoadExams();
+            currentUser = user;
             this.CourseName_comboBox.SelectedIndexChanged += new System.EventHandler(this.CourseName_comboBox_SelectedIndexChanged);
-            
+            HideStudent();
 
+        }
+        private void HideStudent()
+        {
+            if (currentUser.Role == "Student"|| currentUser.Role == "Lecturer" || currentUser.Role == "Staff")
+            {
+                student_menu_pn.Visible = false;
+            }
         }
         private void LoadMarks()
         {

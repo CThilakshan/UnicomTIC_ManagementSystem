@@ -36,8 +36,8 @@ namespace Unicom_TIC_Management_System
                 UserDetails_label.Enabled = false;
                 lecturer_label.Enabled = false;
                 Staff_Label.Enabled = false;
-                lbmark.Enabled = false;
-                lbexam.Enabled = false;
+                
+                
             }
             else if (currentUser.Role == "Lecturer")
             {
@@ -45,8 +45,6 @@ namespace Unicom_TIC_Management_System
                 Attendance_label.Enabled = false;
                 UserDetails_label.Enabled = false;
                 Staff_Label.Enabled = false;
-                lbmark.Enabled = false;
-                lbexam.Enabled = false;
                 lbstudent.Enabled = false;
 
             }
@@ -55,8 +53,6 @@ namespace Unicom_TIC_Management_System
                 Course_label.Enabled = false;
                 Attendance_label.Enabled = false;
                 UserDetails_label.Enabled = false;
-                lbmark.Enabled = false;
-                lbexam.Enabled = false;
             }
             
         }
@@ -87,12 +83,14 @@ namespace Unicom_TIC_Management_System
 
         private void lbexam_Click(object sender, EventArgs e)
         {
-            LoadForm(new ExamForm());
+            var examForm = new ExamForm(currentUser);
+            LoadForm(examForm);
         }
 
         private void lbmark_Click(object sender, EventArgs e)
         {
-            LoadForm(new MarkForm());
+            var markForm = new MarkForm(currentUser);
+            LoadForm(markForm);
         }
 
         private void lbCourse_Click(object sender, EventArgs e)
