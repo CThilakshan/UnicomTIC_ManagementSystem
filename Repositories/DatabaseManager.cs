@@ -55,12 +55,12 @@ namespace Unicom_TIC_Management_System.Repositories
                     CREATE TABLE IF NOT EXISTS Marks (
                         Mark_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                         Exam_Marks INTEGER NOT NULL,
-                        Grade TEXT NOT NULL,
-                        Mark_Release_Date TEXT NOT NULL,
                         Student_ID INTEGER NOT NULL,
+                        Course_ID INTEGER NOT NULL,
                         Exam_ID INTEGER NOT NULL,
                         Subject_ID INTEGER NOT NULL,
                         FOREIGN KEY (Student_ID) REFERENCES Students(Student_ID),
+                        FOREIGN KEY (Course_ID) REFERENCES Courses(Course_ID),
                         FOREIGN KEY (Exam_ID) REFERENCES Exams(Exam_ID),
                         FOREIGN KEY (Subject_ID) REFERENCES Subjects(Subject_ID)
                     );  

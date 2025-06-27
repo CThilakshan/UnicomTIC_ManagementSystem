@@ -164,31 +164,7 @@ namespace Unicom_TIC_Management_System.Controllers
 
             return rooms;
         }
-        public Room GetRoomById(int id)
-        {
-            using (var conn = DBConnection.GetConnection())
-            {
-                // conn.Open(); // Removed, connection is already opened by GetConnection()
-
-                var cmd = new SQLiteCommand("SELECT * FROM Rooms WHERE Room_ID = @Room_ID", conn);
-                cmd.Parameters.AddWithValue("@Room_ID", id);
-
-                using (var reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        return new Room
-                        {
-                            Room_ID = reader.GetInt32(0),
-                            Room_Name = reader.GetString(1),
-                            Room_Type = reader.GetString(2)
-                        };
-                    }
-                }
-            }
-
-            return null;
-        }
+        
 
     }
 

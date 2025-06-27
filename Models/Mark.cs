@@ -25,12 +25,13 @@ namespace Unicom_TIC_Management_System.Model
         /// </summary>
         public int Subject_ID {  get; set; }
         public string Subject_Name { get; set; }
+        public int Course_ID {  get; set; }
+        public string Course_Name { get; set; }
         /// <summary>
         /// 
         /// </summary>
         public int Exam_Marks {  get; set; }
-        public string Grade {  get; set; }
-        public string Mark_Release_Date {  get; set; }
+        
 
 
 

@@ -51,10 +51,11 @@
             // Exam_dataGridView
             // 
             this.Exam_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Exam_dataGridView.Location = new System.Drawing.Point(82, 338);
+            this.Exam_dataGridView.Location = new System.Drawing.Point(82, 300);
             this.Exam_dataGridView.Name = "Exam_dataGridView";
             this.Exam_dataGridView.Size = new System.Drawing.Size(570, 195);
             this.Exam_dataGridView.TabIndex = 34;
+            this.Exam_dataGridView.SelectionChanged += new System.EventHandler(this.Exam_dataGridView_SelectionChanged);
             // 
             // CourseName_comboBox
             // 
@@ -112,6 +113,7 @@
             this.ExamDelete_button.TabIndex = 17;
             this.ExamDelete_button.Text = "Delete";
             this.ExamDelete_button.UseVisualStyleBackColor = true;
+            this.ExamDelete_button.Click += new System.EventHandler(this.ExamDelete_button_Click);
             // 
             // ExamUpdate_button
             // 
@@ -122,6 +124,7 @@
             this.ExamUpdate_button.TabIndex = 16;
             this.ExamUpdate_button.Text = "Update";
             this.ExamUpdate_button.UseVisualStyleBackColor = true;
+            this.ExamUpdate_button.Click += new System.EventHandler(this.ExamUpdate_button_Click);
             // 
             // ExamInsert_button
             // 

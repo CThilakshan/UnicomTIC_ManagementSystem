@@ -206,6 +206,7 @@ namespace Unicom_TIC_Management_System.Controller
             return studentList;
         }
 
+
         // Get a single student by ID
         public Student GetStudentById(int studentId)
         {
@@ -237,7 +238,38 @@ namespace Unicom_TIC_Management_System.Controller
 
             return null;
         }
-       
-        
+        public List<Student> GetStudentsByCourseId(int courseId)
+        {
+            var students = new List<Student>();
+
+            using (var conn = DBConnection.GetConnection())
+            {
+                const string query = "SELECT Student_ID, Student_Name FROM Students WHERE Course_ID = @Course_ID";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Course_ID", courseId);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var student = new Student
+                            {
+                                Student_ID = reader.GetInt32(reader.GetOrdinal("Student_ID")),
+                                Student_Name = reader.IsDBNull(reader.GetOrdinal("Student_Name")) ? "" : reader.GetString(reader.GetOrdinal("Student_Name"))
+                                // Add other student properties here if needed
+                            };
+
+                            students.Add(student);
+                        }
+                    }
+                }
+            }
+
+            return students;
+        }
+
+
     }
 }

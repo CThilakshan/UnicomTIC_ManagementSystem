@@ -144,6 +144,7 @@ namespace Unicom_TIC_Management_System.Controllers
 
             return null;
         }
+        
         public List<Course> SearchCoursesByName(string keyword)
         {
             string searchQuery = "SELECT * FROM Courses WHERE Course_Name LIKE @Course_Name";
