@@ -288,5 +288,56 @@ namespace Unicom_TIC_Management_System.Controllers
                 MessageBox.Show("An error occurred while deleting the mark:\n" + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public List<Mark> GetMarksOrderedByDescending()
+        {
+            var marks = new List<Mark>();
+
+            using (var conn = DBConnection.GetConnection())
+            {
+                var query = @"
+                    SELECT 
+                        m.Mark_ID,
+                        m.Exam_ID,
+                        e.Exam_Name,
+                        e.Exam_Date,
+                        m.Student_ID,
+                        st.Student_Name,
+                        m.Subject_ID,
+                        s.Subject_Name,
+                        m.Course_ID,
+                        c.Course_Name,
+                        m.Exam_Marks
+                    FROM Marks m
+                    JOIN Students st ON m.Student_ID = st.Student_ID
+                    JOIN Exams e ON m.Exam_ID = e.Exam_ID
+                    JOIN Subjects s ON m.Subject_ID = s.Subject_ID
+                    JOIN Courses c ON m.Course_ID = c.Course_ID
+                    ORDER BY m.Exam_Marks DESC";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        marks.Add(new Mark
+                        {
+                            Mark_ID = reader.GetInt32(0),
+                            Exam_ID = reader.GetInt32(1),
+                            Exam_Name = reader.GetString(2),
+                            // Optionally parse Exam_Date if needed
+                            Student_ID = reader.GetInt32(4),
+                            Student_Name = reader.GetString(5),
+                            Subject_ID = reader.GetInt32(6),
+                            Subject_Name = reader.GetString(7),
+                            Course_ID = reader.GetInt32(8),
+                            Course_Name = reader.GetString(9),
+                            Exam_Marks = reader.GetInt32(10)
+                        });
+                    }
+                }
+            }
+
+            return marks;
+        }
     }
 }

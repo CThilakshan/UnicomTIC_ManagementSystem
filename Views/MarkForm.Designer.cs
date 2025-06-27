@@ -45,6 +45,7 @@
             this.CourseName_comboBox = new System.Windows.Forms.ComboBox();
             this.MarkCoursename_label = new System.Windows.Forms.Label();
             this.ExamName_comboBox = new System.Windows.Forms.ComboBox();
+            this.Descendingorder_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Mark_dataGridView)).BeginInit();
             this.student_menu_pn.SuspendLayout();
             this.student_header_pn.SuspendLayout();
@@ -112,6 +113,7 @@
             // 
             // student_menu_pn
             // 
+            this.student_menu_pn.Controls.Add(this.Descendingorder_button);
             this.student_menu_pn.Controls.Add(this.MarkDelete_button);
             this.student_menu_pn.Controls.Add(this.MarkUpdate_button);
             this.student_menu_pn.Controls.Add(this.MarkInsert_button);
@@ -218,6 +220,17 @@
             this.ExamName_comboBox.Size = new System.Drawing.Size(325, 21);
             this.ExamName_comboBox.TabIndex = 54;
             // 
+            // Descendingorder_button
+            // 
+            this.Descendingorder_button.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Descendingorder_button.Location = new System.Drawing.Point(82, 7);
+            this.Descendingorder_button.Name = "Descendingorder_button";
+            this.Descendingorder_button.Size = new System.Drawing.Size(169, 29);
+            this.Descendingorder_button.TabIndex = 18;
+            this.Descendingorder_button.Text = "Marks Descending Order";
+            this.Descendingorder_button.UseVisualStyleBackColor = true;
+            this.Descendingorder_button.Click += new System.EventHandler(this.Descendingorder_button_Click);
+            // 
             // MarkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,5 +280,6 @@
         private System.Windows.Forms.ComboBox CourseName_comboBox;
         private System.Windows.Forms.Label MarkCoursename_label;
         private System.Windows.Forms.ComboBox ExamName_comboBox;
+        private System.Windows.Forms.Button Descendingorder_button;
     }
 }

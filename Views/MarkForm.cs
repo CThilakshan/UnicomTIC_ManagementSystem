@@ -298,5 +298,23 @@ namespace Unicom_TIC_Management_System.View
             }
 
         }
+
+        private void Descendingorder_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var marks = markController.GetMarksOrderedByDescending();
+
+                // Assuming marksDataGridView is your DataGridView control
+                Mark_dataGridView.DataSource = marks;
+
+                // Optional: Adjust DataGridView columns if necessary
+                // marksDataGridView.Columns["Mark_ID"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading marks: " + ex.Message);
+            }
+        }
     }
 }

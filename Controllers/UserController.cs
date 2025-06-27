@@ -4,6 +4,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Unicom_TIC_Management_System.Model;
 using Unicom_TIC_Management_System.Repositories;
 
@@ -52,8 +53,108 @@ namespace Unicom_TIC_Management_System.Controllers
 
             return userList;
         }
+        public void UpdateUserDetails(int user_id, string username, string password)
+        {
+            string updateQuery = "UPDATE Users SET Username = @Username, Password = @Password WHERE User_ID = @User_ID";
 
+            try
+            {
+                using (var conn = DBConnection.GetConnection())
+                {
+                    using (var cmd = new SQLiteCommand(updateQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", username);
+                        cmd.Parameters.AddWithValue("@Password", password);
+                        cmd.Parameters.AddWithValue("@User_ID", user_id);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("User details updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No user found with the specified ID.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while updating the user:\n" + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void DeleteUser(int user_id)
+        {
+            string deleteQuery = "DELETE FROM Users WHERE User_ID = @User_ID";
+            try
+            {
+                using (var conn = DBConnection.GetConnection())
+                {
+                    // conn.Open(); // Removed because GetConnection() already opens the connection
+                    using (var cmd = new SQLiteCommand(deleteQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@User_ID", user_id);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("User deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No User found with the specified ID.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while deleting the User:\n" + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
+        }
+        public List<User> SearchUsers(string keyword)
+        {
+            var users = new List<User>();
+            string query = "SELECT * FROM Users WHERE Username LIKE @Keyword";
+
+            try
+            {
+                using (var conn = DBConnection.GetConnection())
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            User user = new User
+                            {
+                                User_ID = reader.GetInt32(0),
+                                Name = reader.GetString(1),
+                                Username = reader.GetString(2),
+                                Password = reader.GetString(3)
+                            };
+                            users.Add(user);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while searching users:\n" + ex.Message,
+                    "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return users;
+        }
 
 
     }
 }
+    
+    
