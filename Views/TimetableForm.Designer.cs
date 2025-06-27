@@ -36,6 +36,8 @@
             this.TTUpdate_button = new System.Windows.Forms.Button();
             this.TTInsert__button = new System.Windows.Forms.Button();
             this.TimeTableCenter_panel = new System.Windows.Forms.Panel();
+            this.TTSearch_button = new System.Windows.Forms.Button();
+            this.TTSearch_textBox = new System.Windows.Forms.TextBox();
             this.TTLecturer_comboBox = new System.Windows.Forms.ComboBox();
             this.LecturerName_label = new System.Windows.Forms.Label();
             this.TimeTabledataGridView = new System.Windows.Forms.DataGridView();
@@ -49,8 +51,6 @@
             this.SubjectName_label = new System.Windows.Forms.Label();
             this.TimetableSlot_label = new System.Windows.Forms.Label();
             this.TimetableDate_label = new System.Windows.Forms.Label();
-            this.TTSearch_textBox = new System.Windows.Forms.TextBox();
-            this.TTSearch_button = new System.Windows.Forms.Button();
             this.student_header_pn.SuspendLayout();
             this.timetable_panel.SuspendLayout();
             this.TimeTableCenter_panel.SuspendLayout();
@@ -157,6 +157,25 @@
             this.TimeTableCenter_panel.Size = new System.Drawing.Size(730, 462);
             this.TimeTableCenter_panel.TabIndex = 36;
             // 
+            // TTSearch_button
+            // 
+            this.TTSearch_button.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TTSearch_button.Location = new System.Drawing.Point(148, 232);
+            this.TTSearch_button.Name = "TTSearch_button";
+            this.TTSearch_button.Size = new System.Drawing.Size(99, 34);
+            this.TTSearch_button.TabIndex = 19;
+            this.TTSearch_button.Text = "Search";
+            this.TTSearch_button.UseVisualStyleBackColor = true;
+            this.TTSearch_button.Click += new System.EventHandler(this.TTSearch_button_Click);
+            // 
+            // TTSearch_textBox
+            // 
+            this.TTSearch_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TTSearch_textBox.Location = new System.Drawing.Point(271, 237);
+            this.TTSearch_textBox.Name = "TTSearch_textBox";
+            this.TTSearch_textBox.Size = new System.Drawing.Size(294, 26);
+            this.TTSearch_textBox.TabIndex = 60;
+            // 
             // TTLecturer_comboBox
             // 
             this.TTLecturer_comboBox.FormattingEnabled = true;
@@ -229,7 +248,7 @@
             this.TTDate_dateTimePicker.Name = "TTDate_dateTimePicker";
             this.TTDate_dateTimePicker.Size = new System.Drawing.Size(294, 22);
             this.TTDate_dateTimePicker.TabIndex = 52;
-            this.TTDate_dateTimePicker.Value = new System.DateTime(2025, 6, 24, 2, 47, 21, 0);
+            this.TTDate_dateTimePicker.Value = new System.DateTime(2025, 6, 27, 6, 55, 23, 0);
             // 
             // RoomName_label
             // 
@@ -280,25 +299,6 @@
             this.TimetableDate_label.Size = new System.Drawing.Size(142, 25);
             this.TimetableDate_label.TabIndex = 47;
             this.TimetableDate_label.Text = "Timetable Date";
-            // 
-            // TTSearch_textBox
-            // 
-            this.TTSearch_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TTSearch_textBox.Location = new System.Drawing.Point(271, 237);
-            this.TTSearch_textBox.Name = "TTSearch_textBox";
-            this.TTSearch_textBox.Size = new System.Drawing.Size(294, 26);
-            this.TTSearch_textBox.TabIndex = 60;
-            // 
-            // TTSearch_button
-            // 
-            this.TTSearch_button.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TTSearch_button.Location = new System.Drawing.Point(148, 232);
-            this.TTSearch_button.Name = "TTSearch_button";
-            this.TTSearch_button.Size = new System.Drawing.Size(99, 34);
-            this.TTSearch_button.TabIndex = 19;
-            this.TTSearch_button.Text = "Search";
-            this.TTSearch_button.UseVisualStyleBackColor = true;
-            this.TTSearch_button.Click += new System.EventHandler(this.TTSearch_button_Click);
             // 
             // TimetableForm
             // 

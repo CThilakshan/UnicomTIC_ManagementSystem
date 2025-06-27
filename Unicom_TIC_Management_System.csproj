@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\ExamController.cs" />
     <Compile Include="Controllers\LecturerController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
